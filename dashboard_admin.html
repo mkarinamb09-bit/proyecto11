@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Dashboard Administrador - CRUD Usuarios</title>
+<!-- Bootswatch Darkly para que combine con el diseño web -->
+<link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/darkly/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-dark text-light">
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black px-4">
+        <a class="navbar-brand" href="../index.html">Proyecto11</a>
+        <div class="ms-auto">
+            <button onclick="logout()" class="btn btn-outline-danger btn-sm">Cerrar Sesión</button>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h1 class="mb-4">Dashboard Administrador</h1>
+
+        <!-- MENÚ DE SECCIONES -->
+        <div class="btn-group mb-4" role="group">
+            <button class="btn btn-primary" onclick="mostrarSeccion('usuarios')">Usuarios</button>
+            <button class="btn btn-outline-primary" onclick="mostrarSeccion('productos')">Productos</button>
+            <button class="btn btn-outline-primary" onclick="mostrarSeccion('ventas')">Ventas</button>
+        </div>
+
+        <!-- SECCIÓN USUARIOS (CRUD COMPLETO) -->
+        <div id="usuarios-seccion" class="card bg-secondary text-light p-4 shadow">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2>CRUD Usuarios</h2>
+                <button class="btn btn-success" onclick="abrirModalCrear()">+ Crear Usuario</button>
+            </div>
+
+            <!-- Tabla para Listar -->
+            <div class="table-responsive">
+                <table class="table table-dark table-striped align-middle">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Correo</th>
+                            <th>Rol</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-usuarios">
+                        <!-- Datos de ejemplo precargados -->
+                        <tr>
+                            <td>1</td>
+                            <td>Carlos Pérez</td>
+                            <td>carlos@mail.com</td>
+                            <td>Cliente</td>
+                            <td>
+                                <button class="btn btn-warning btn-sm" onclick="editarUsuario(1, 'Carlos Pérez', 'carlos@mail.com', 'Cliente')">Editar</button>
+                                <button class="btn btn-danger btn-sm" onclick="eliminarUsuario(this)">Eliminar</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Ana Gómez</td>
+                            <td>ana@mail.com</td>
+                            <td>Administrador</td>
+                            <td>
+                                <button class="btn btn-warning btn-sm" onclick="editarUsuario(2, 'Ana Gómez', 'ana@mail.com', 'Administrador')">Editar</button>
+                                <button class="btn btn-danger btn-sm" onclick="eliminarUsuario(this)">Eliminar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- SECCIÓN PRODUCTOS (Oculta por defecto) -->
+        <div id="productos-seccion" class="card bg-secondary text-light p-4 shadow d-none">
+            <h2>CRUD Productos</h2>
+            <p>Sección de gestión de productos en construcción.</p>
+        </div>
+
+        <!-- SECCIÓN VENTAS (Oculta por defecto) -->
+        <div id="ventas-seccion" class="card bg-secondary text-light p-4 shadow d-none">
+            <h2>CRUD Ventas</h2>
+            <p>Sección de gestión de ventas en construcción.</p>
+        </div>
+    </div>
+
+    <!-- MODAL PARA CREAR / EDITAR USUARIO -->
+    <div class="modal fade" id="modalUsuario" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark text-light">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitulo">Nuevo Usuario</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formUsuario">
+                        <input type="hidden" id="usuarioId">
+                        <div class="mb-3">
+                            <label class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombreUsuario" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="correoUsuario" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Rol</label>
+                            <select class="form-select" id="rolUsuario">
+                                <option value="Cliente">Cliente</option>
+                                <option value="Administrador">Administrador</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">Guardar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- LÓGICA DE JAVASCRIPT PARA EL CRUD -->
+    <script>
+        let modalBS;
+        window.addEventListener('DOMContentLoaded', () => {
+            modalBS = new bootstrap.Modal(document.getElementById('modalUsuario'));
+        });
+
+        // Cambiar entre pestañas del Dashboard
+        function mostrarSeccion(seccion) {
+            document.getElementById('usuarios-seccion').classList.add('d-none');
+            document.getElementById('productos-seccion').classList.add('d-none');
+            document.getElementById('ventas-seccion').classList.add('d-none');
+            
+            document.getElementById(seccion + '-seccion').classList.remove('d-none');
+        }
+
+        // Abrir modal para Crear
+        function abrirModalCrear() {
+            document.getElementById('modalTitulo').innerText = "Crear Usuario";
+            document.getElementById('formUsuario').reset();
+            document.getElementById('usuarioId').value = "";
+            modalBS.show();
+        }
+
+        // Abrir modal para Editar
+        function editarUsuario(id, nombre, correo, rol) {
+            document.getElementById('modalTitulo').innerText = "Editar Usuario";
+            document.getElementById('usuarioId').value = id;
+            document.getElementById('nombreUsuario').value = nombre;
+            document.getElementById('correoUsuario').value = correo;
+            document.getElementById('rolUsuario').value = rol;
+            modalBS.show();
+        }
+
+        // Guardar (Simula Crear y Editar en la tabla interactiva)
+        document.getElementById('formUsuario').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let id = document.getElementById('usuarioId').value;
+            let nombre = document.getElementById('nombreUsuario').value;
+            let correo = document.getElementById('correoUsuario').value;
+            let rol = document.getElementById('rolUsuario').value;
+            let tbody = document.getElementById('tabla-usuarios');
+
+            if (id === "") {
+                // Crear nuevo registro en la tabla
+                let nuevoId = tbody.rows.length + 1;
+                let fila = `<tr>
+                    <td>${nuevoId}</td>
+                    <td>${nombre}</td>
+                    <td>${correo}</td>
+                    <td>${rol}</td>
+                    <td>
+                        <button class="btn btn-warning btn-sm" onclick="editarUsuario(${nuevoId}, '${nombre}', '${correo}', '${rol}')">Editar</button>
+                        <button class="btn btn-danger btn-sm" onclick="eliminarUsuario(this)">Eliminar</button>
+                    </td>
+                </tr>`;
+                tbody.innerHTML += fila;
+            } else {
+                // Actualizar registro existente (aquí se listarían de nuevo o actualizarían por ID)
+                alert("Usuario actualizado correctamente (Simulación)");
+            }
+
+            modalBS.hide();
+        });
+
+        // Eliminar registro
+        function eliminarUsuario(btn) {
+            if (confirm("¿Estás seguro de eliminar este usuario?")) {
+                let fila = btn.closest('tr');
+                fila.remove();
+            }
+        }
+
+        // Cerrar sesión
+        function logout() {
+            window.location.href = "../login.html";
+        }
+    </script>
+</body>
+</html>

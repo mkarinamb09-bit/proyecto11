@@ -1,0 +1,92 @@
+<!DOCTYPE html> <!-- HTML5 -->
+<html lang="es"> <!-- Idioma español -->
+
+<head>
+    <meta charset="UTF-8"> <!-- Codificación -->
+    <title>Registro</title> <!-- Título pestaña -->
+
+    <!-- Conectamos estilos -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header>
+        <h1>Registro de Usuario</h1>
+    </header>
+
+    <!-- ================= FORMULARIO REGISTRO ================= -->
+   <!-- Sección que contiene el formulario -->
+<section class="form-section">
+    <!-- "form-section" es una clase que se usa en el CSS para dar diseño
+         como centrado, espacio y alineación -->
+
+    <div class="form-box">
+        <!-- "form-box" es la caja blanca del formulario
+             Se usa para aplicar fondo, sombra y bordes redondeados -->
+
+        <!-- Formulario de registro -->
+        <form id="registerForm">
+            <!-- <form> agrupa los campos que se enviarán
+                 id="registerForm" permite manipularlo con JavaScript -->
+
+            <!-- Usuario -->
+            <input 
+                type="text" 
+                id="regUser" 
+                placeholder="Usuario" 
+                required>
+            <!-- type="text" permite escribir texto -->
+            <!-- id="regUser" sirve para capturar el valor con JavaScript -->
+            <!-- placeholder muestra texto guía dentro del campo -->
+            <!-- required obliga a llenar el campo antes de enviar -->
+
+            <!-- Correo -->
+            <input 
+                type="email" 
+                id="regEmail" 
+                placeholder="Correo electrónico" 
+                required>
+            <!-- type="email" valida que tenga formato de correo -->
+            <!-- id="regEmail" se usa en JavaScript -->
+            <!-- required obliga a completar el campo -->
+
+            <!-- Contraseña -->
+            <input 
+                type="password" 
+                id="regPass" 
+                placeholder="Contraseña" 
+                required>
+            <!-- type="password" oculta los caracteres -->
+            <!-- id="regPass" permite acceder al valor desde JS -->
+            <!-- required evita que esté vacío -->
+
+            <!-- Botón -->
+            <button type="submit">
+                Registrarse
+            </button>
+            <!-- type="submit" envía el formulario -->
+            <!-- Al hacer clic ejecuta el evento "submit" en JavaScript -->
+
+        </form>
+        <!-- Fin del formulario -->
+
+    </div>
+    <!-- Fin de la caja del formulario -->
+
+</section>
+<!-- Fin de la sección -->
+
+
+    <!-- Enlace para volver a login -->
+    <p style="text-align:center;">
+        ¿Ya tienes cuenta?
+        <a href="login.html">Inicia sesión aquí</a>
+    </p>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>

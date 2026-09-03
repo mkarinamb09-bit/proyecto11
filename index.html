@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Mi Página Web</title>
+    <!-- Bootswatch Darkly -->
     <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/darkly/bootstrap.min.css" rel="stylesheet">
     <style>
         /* Carrusel */
@@ -21,7 +22,7 @@
         /* QR más elegante */
         #qrcode {
             padding: 10px;
-            background: rgb(218, 9, 124);
+            background: rgb(228, 8, 92);
             border-radius: 10px;
             display: inline-block;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
@@ -30,9 +31,45 @@
 </head>
 <body>
 
+    <!-- MENÚ DE NAVEGACIÓN -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Proyecto11</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="nosotros.html">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="registro.html">Registro</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard_cliente.html">Dashboard Cliente</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard_admin.html">Dashboard Admin</a>
+                </ul>
+                <!-- Botón de Iniciar Sesión -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="btn btn-outline-light" href="login.html">Iniciar Sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido Principal -->
     <div class="container mt-5 text-center">
         <h1>Bienvenido a mi Proyecto Web</h1>
         
+        <!-- Carrusel Automático -->
         <div class="carrusel my-4">
             <div class="carrusel-imagenes">
                 <img src="https://picsum.photos/800/400?random=1" class="slide activo" alt="Slide 1">
@@ -47,14 +84,18 @@
         </div>
     </div>
 
+    <!-- FOOTER -->
     <footer class="bg-dark text-white text-center p-3 mt-5">
         <p>2026 - Proyecto Web</p>
     </footer>
 
+    <!-- BOOTSTRAP JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Librería QR -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
+    <!-- Carrusel automático -->
     <script>
     let slides = document.querySelectorAll(".slide");
     let index = 0;
@@ -71,6 +112,7 @@
     }
     </script>
 
+    <!-- Generar QR apuntando a GitHub -->
     <script>
     new QRCode(document.getElementById("qrcode"), {
         text: "https://mkarinamb09-bit.github.io/proyecto11/",

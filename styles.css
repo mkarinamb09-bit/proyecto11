@@ -1,0 +1,225 @@
+
+/* ================= ESTILOS GENERALES ================= */
+
+body{
+    /*background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);*/
+    font-family: "Cascadia Mono", sans-serif;/* fuente */
+    
+    /*fondo animado */
+    background: linear-gradient(-45deg, #f10660, #2c0202, #e90e95, #ec297a);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+}
+
+
+
+/* ================= HEADER ================= */
+
+header {
+    background-color: #222; /* Fondo oscuro del encabezado */
+    color: white; /* Color del texto */
+    text-align: center; /* Centra el texto horizontalmente */
+    padding: 20px; /* Espacio interno arriba y abajo */
+}
+
+
+/* ================= MENÚ ================= */
+
+nav {
+    background-color: #e91b71; /* Fondo gris oscuro del menú */
+    text-align: center; /* Centra los enlaces */
+    padding: 10px; /* Espacio interno */
+}
+
+nav a {
+    color: white; /* Color blanco para los enlaces */
+    text-decoration: none; /* Quita el subrayado del enlace */
+    margin: 0 15px; /* Espacio horizontal entre enlaces */
+    font-weight: bold; /* Hace el texto más grueso */
+}
+
+nav a:hover {
+    color: yellow; /* Cambia el color cuando el mouse pasa encima */
+}
+
+
+/* ================= CONTENEDOR ================= */
+
+.contenedor {
+    display: flex; /* Activa diseño en columnas (flexbox) */
+    padding: 20px; /* Espacio interno alrededor */
+}
+
+
+/* ================= SIDEBAR ================= */
+
+.sidebar {
+    width: 25%; /* Ocupa el 25% del ancho */
+    background-color: #ddd; /* Fondo gris claro */
+    padding: 15px; /* Espacio interno */
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+
+/* ================= CONTENIDO PRINCIPAL ================= */
+
+.contenido {
+    width: 75%; /* Ocupa el 75% restante */
+    padding: 15px; /* Espacio interno */
+}
+
+
+/* ================= CAJAS ================= */
+
+.caja {
+    background-color: white; /* Fondo blanco */
+    padding: 15px; /* Espacio interno */
+    margin-bottom: 15px; /* Espacio inferior entre cajas */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+    /* Sombra suave alrededor de la caja */
+}
+
+
+/* ================= IMÁGENES ================= */
+
+img {
+    width: 100%; /* Hace que la imagen ocupe todo el ancho del contenedor */
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+
+/* ================= FORMULARIOS ================= */
+
+.form-section {
+    display: flex; /* Activa alineación flexible */
+    justify-content: center; /* Centra horizontalmente los formularios */
+    gap: 40px; /* Espacio entre formularios */
+    padding: 40px; /* Espacio interno alrededor */
+    background-color: transparent; 
+    /* No tiene fondo propio, usa el del body */
+}
+
+.form-box {
+    background: white; /* Fondo blanco del formulario */
+    padding: 25px; /* Espacio interno */
+    width: 280px; /* Ancho fijo del formulario */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+    /* Sombra suave */
+    text-align: center; /* Centra el contenido interno */
+}
+
+.form-box input {
+    width: 100%; /* Campo ocupa todo el ancho */
+    padding: 8px; /* Espacio interno del input */
+    margin: 8px 0; /* Espacio entre campos */
+}
+
+.form-box button {
+    width: 100%; /* Botón ancho completo */
+    padding: 10px; /* Espacio interno */
+    background-color: #007BFF; /* Color azul del botón */
+    color: white; /* Texto blanco */
+    border: none; /* Quita el borde */
+    cursor: pointer; /* Cambia el cursor a mano */
+}
+
+.form-box button:hover {
+    background-color: #0056b3; 
+    /* Azul más oscuro cuando pasa el mouse */
+}
+
+
+/*dasboar cliente y adminstrador*/
+
+.body_cliente_admin{
+font-family:Arial;
+background:#f4f4f4;
+text-align:center;
+}
+
+header{
+background:#333;
+color:white;
+padding:20px;
+}
+
+nav{
+margin:20px;
+}
+
+button{
+padding:10px;
+margin:5px;
+}
+
+input{
+display:block;
+margin:10px auto;
+padding:10px;
+}
+
+.caja{
+background:white;
+padding:20px;
+margin:20px auto;
+width:300px;
+border-radius:10px;
+}
+
+.oculto{
+display:none;
+}
+
+/* ================= CARRUSEL AUTOMÁTICO ================= */
+
+.carrusel{
+    width:100%;
+    max-width:600px;
+    margin:auto;
+    overflow:hidden;
+}
+
+.carrusel-imagenes{
+    position:relative;
+}
+
+.slide{
+    width:100%;
+    display:none;
+    border-radius:10px;
+}
+
+.activo{
+    display:block;
+}
+
+/* ================= ANIMACIÓN GRADIENTE ================= */
+
+@keyframes gradientBG {
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+
+    100%{
+        background-position:0% 50%;
+    }
+
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+    background-color: #222; /* Fondo oscuro */
+    color: white; /* Texto blanco */
+    text-align: center; /* Centra el texto */
+    padding: 15px; /* Espacio interno */
+}
+
+

@@ -1,0 +1,60 @@
+<!DOCTYPE html> <!-- Declaramos que usamos HTML5 -->
+<html lang="es"> <!-- Indicamos idioma español -->
+
+<head>
+    <meta charset="UTF-8"> <!-- Permite usar tildes y caracteres especiales -->
+    <title>Login</title> <!-- Título de la pestaña -->
+
+    <!-- Conectamos el archivo de estilos -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header>
+        <h1>Inicio de Sesión</h1> <!-- Título principal -->
+    </header>
+
+    
+    <!-- ================= FORMULARIO LOGIN ================= -->
+    <section class="form-section"> <!-- Sección que contiene el formulario -->
+
+        <div class="form-box"> <!-- Caja contenedora -->
+
+            <!-- Formulario -->
+            <form id="loginForm"> <!-- ID para usar con JavaScript -->
+
+                <!-- Campo usuario -->
+                <input type="text" id="loginUser" placeholder="Usuario" required>
+                <!-- required obliga a que el campo no esté vacío -->
+
+                <!-- Campo contraseña -->
+                <input type="password" id="loginPass" placeholder="Contraseña" required>
+
+                <!-- Botón enviar -->
+                <button type="submit">Ingresar</button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+    <!-- Enlace para ir a registro -->
+    <p style="text-align:center;">
+        ¿No tienes cuenta?
+        <a href="registro.html">Registrarse aquí</a>
+    </p>
+    
+    <p style="text-align:center;">
+        ¿No tienes cuenta?
+        <a href="index.html">volver</a>
+    </p>
+
+
+    <!-- Conectamos JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>
